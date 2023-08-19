@@ -14,7 +14,7 @@ public class Program
 {
     private static IConfig _config = DefaultConfig.Instance.AddJob(Job.Default
             .WithToolchain(new InProcessEmitToolchain(
-                TimeSpan.FromSeconds(30),
+                TimeSpan.FromSeconds(60),
                 false))
             .WithIterationTime(TimeInterval.FromMilliseconds(20)))
         .AddLogger(new ConsoleLogger(unicodeSupport: true, ConsoleLogger.CreateGrayScheme()))

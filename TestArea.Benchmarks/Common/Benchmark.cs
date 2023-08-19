@@ -9,7 +9,7 @@ namespace TestArea.Benchmarks.Common;
 public class Benchmark : IBenchmark
 {
     private static string ct = "123";
-
+    
     [Benchmark]
     public void SerializeObject()
     {
@@ -19,7 +19,7 @@ public class Benchmark : IBenchmark
             var st = Dez<string>(jopa);
         }
     }
-
+    
     [Benchmark]
     public void ToByteArrayBf()
     {
@@ -29,14 +29,14 @@ public class Benchmark : IBenchmark
             var st = FromByteArray<string>(obj);
         }
     }
-
-
+    
+    
     private static byte[] SerializeObject(object value) 
         => Encoding.UTF8.GetBytes(JsonSerializer.Serialize(value));
-
+    
     private static T Dez<T>(byte[] value) where T : class 
-        => JsonSerializer.Deserialize<T>(Encoding.UTF8.GetString(value));
-
+        => JsonSerializer.Deserialize<T>(value);
+    
     private static byte[] ToByteArrayBf(object obj)
     {
         var binaryFormatter = new BinaryFormatter();
@@ -46,7 +46,7 @@ public class Benchmark : IBenchmark
             return memoryStream.ToArray();
         }
     }
-
+    
     private static T FromByteArray<T>(byte[] byteArray)
         where T : class
     {
