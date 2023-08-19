@@ -3,7 +3,7 @@ using TestArea.Workers;
 
 namespace TestArea;
 
-public record SportLevelEventStatusRequestDto(int LineServiceId,
+public record SomeDto(int LineServiceId,
     int TranslationId,
     DateTimeOffset ProxyTimestamps,
     int EventCode,

@@ -11,20 +11,20 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        var manager = new WorkerManager<SportLevelEventStatusRequestDto>();
+        var manager = new WorkerManager<SomeDto>();
         int i = 1;
         while (true)
         {
             var b = CreateObjects(i);
             await manager.TryPushMessage(b.TranslationId, b);
-            await Task.Delay(100);
+            // await Task.Delay(100); //todo if not delay all went wrong
             i++;
         }
     }
 
-    static SportLevelEventStatusRequestDto CreateObjects(int i)
+    static SomeDto CreateObjects(int i)
     {
-        return new SportLevelEventStatusRequestDto(
+        return new SomeDto(
             1,
             Random.Shared.Next(1, 20),
             DateTimeOffset.Now,
